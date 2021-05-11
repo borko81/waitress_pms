@@ -11,9 +11,11 @@
         * {
             font-family: "Lucida Sans", sans-serif;
         }
-        .info :hover {
+
+        /* Color when mouse over */
+        /* .info :hover {
             background-color: white;
-        }
+        } */
 
         .housekeeping {
             display: grid;
@@ -23,14 +25,14 @@
             color: #444;
         }
         .info_content {
+            display: flex;
             border: 1px solid black;
             background-color: #fff;
             color: #000;
             border-radius: 5px;
-            padding: 10px;
+            padding: 5px;
             font-size: 150%;
-            height: 250px;
-            text-align: center;
+            height: 170px;
         }
         .info_all_center {
             text-align: center;
@@ -39,6 +41,7 @@
         .housekeeping > a {
             text-decoration: none;
         }
+
         .modal {
             display: none;
             position: fixed;
@@ -49,6 +52,14 @@
             height: 100%;
             overflow: auto;
             background-color: rgba(0,0,0,0.6);
+        }
+
+        .my_left{
+            text-align: left;
+        }
+
+        .my_right{
+            text-align: right;
         }
 
         .closd {
@@ -89,11 +100,11 @@
             {% for table in data %}
             <a href="#" class="info" data-id={{ table[0] }}>
                 <div class="info_content">
-                    Маса: {{ table[1] }}
+                    <p><span class="my_left"><b>{{ table[1] }}</b></span></p>
                     <div class="info_all_center">
                         <small>{{ table[2] }}</small>
                         <p>{{ "%.2f"|format(table[3]) }} лв</p>
-                        <small>{{ table[4] }}</small>
+                        <small>{{ table[4].strftime('%m.%d.%Y %H:%M') }}</small>
                     </div>
                 </div>
             </a>
